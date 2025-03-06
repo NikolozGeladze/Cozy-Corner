@@ -19,6 +19,16 @@ body {
     padding: 20px 50px;
 }
 
+.food-name {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.food-price {
+    margin-top: 10px
+}
+
 .show-my-order {
     z-index: 99999999999;
     position: fixed;
@@ -91,22 +101,19 @@ body {
     display: block;
 }
 
-.my-order-item {
-    width: 100%;
-    padding: 10px;
-
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
+td button {
+    padding: 5px;
+    color: #800000;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 5px;
 }
 
-.my-order-item-img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 100%;
-    margin-right: 10px;
-}
 .menu-container section {
     display: flex;
     justify-content: space-between;
@@ -174,7 +181,7 @@ body.no-scroll {
 .add-to-card-div-main {
     display: flex;
     width: 100%;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 }
 
@@ -289,10 +296,6 @@ section table tbody tr td {
 
     table tbody tr td {
         text-align: center;
-    }
-
-    .category-name {
-        pointer-events: none;
     }
 
     .arrowhead-div svg {

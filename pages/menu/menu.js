@@ -210,7 +210,7 @@ menu.en.forEach(category => {
             </div>
             <ul>
                 ${category.food.map(item => `
-                    <li class="item">
+                    <li class="item ${item.name.replace(/ /g, "-").toLowerCase()}">
                         <img src="https://img.freepik.com/premium_photo/isolated_plate_georgian_khinkali_dumplings_219193-6644.jpg" alt="${item.name}">
                         <div class="food-name">${item.name}</div>
                         <strong>
@@ -218,9 +218,9 @@ menu.en.forEach(category => {
                         </strong>
                         <div class="add-to-card-div-main">
                             <div class="add-to-card-div">
-                                <button class="minus-btn plus_minus_btn" id="minusBtn" onclick="plusMinusBtn('minus', this)"><i class="fa-solid fa-minus"></i></button>
+                                <button class="minus-btn plus-minus-btn" id="minusBtn" onclick="plusMinusBtn('minus', this)"><i class="fa-solid fa-minus"></i></button>
                             <p class="quantity" id="quantity"></p>
-                            <button class="plus-btn plus_minus_btn" id="plusBtn" onclick="plusMinusBtn('plus', this)"><i class="fa-solid fa-plus"></i></button>
+                            <button class="plus-btn plus-minus-btn" id="plusBtn" onclick="plusMinusBtn('plus', this)"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
                     </li>
@@ -266,15 +266,31 @@ function plusMinusBtn(plusMinus, btn) {
     } else if (plusMinus === 'minus' && quantities[itemName] > 0) {
         quantities[itemName]--;
     }
+    if (quantities[itemName] > 0) {
+        quantityElement.textContent = quantities[itemName];
+    } else {
+        quantityElement.textContent = '';
+    }
+    if (quantities[itemName] === 0) {
+        delete menuSelected[itemName];
+    }
 
-    quantityElement.textContent = quantities[itemName];
-    console.log(quantities[itemName], quantityElement.textContent);
+    var plusMinusBtns = item.querySelectorAll('.plus-minus-btn');
+    plusMinusBtns.forEach(btn => {
+        btn.classList.add('clicked');
+    });
 
-    var plusMinusBtns = item.querySelectorAll('.plus_minus_btn');
-    plusMinusBtns.forEach(btn => btn.classList.add('clicked'));
+    if (quantities[itemName] === 0) {
+        plusMinusBtns.forEach(btn => {
+            btn.classList.remove('clicked');
+        });
+    }
+
+    totalPrice();
+    showMyOrderedMenu();
 }
 
-var addToCardBtns = document.querySelectorAll('.plus_minus_btn')
+var addToCardBtns = document.querySelectorAll('.plus-minus-btn')
 var categoriesName = document.querySelectorAll('.category-name')
 var categories = document.querySelectorAll('.category')
 var showMyOrderBtn = document.querySelector('.show-my-order')
@@ -285,13 +301,19 @@ addToCardBtns.forEach(btn => {
         var itemName = item.querySelector('.food-name').textContent.trim();
         var quantity = parseInt(item.querySelector('#quantity').textContent);
         var itemPrice = parseFloat(item.querySelector('.food-price').textContent.trim().replace('₾', ''));
-        var price = itemPrice * quantity
+        var price = itemPrice * quantity;
 
-        menuSelected[itemName] = { price, quantity };
-        totalPrice()
+        if (quantity > 0) {
+            menuSelected[itemName] = { price, quantity };
+        } else {
+            delete menuSelected[itemName];
+        }
+
+        totalPrice();
         showMyOrderedMenu();
         console.log(menuSelected);
-        if (Object.keys(menuSelected.length > 1)) {
+
+        if (Object.keys(menuSelected).length > 1) {
             showMyOrderBtn.classList.add('show');
         }
     });
@@ -349,17 +371,26 @@ showHideMyOrder.forEach(btn => {
         console.log(showMainMenuSection);
 
         var myOrderedMenu = ""
-        for (var i in menuSelected) {
-            if (i != 'totalPrice') {
-                console.log(i);
-                myOrderedMenu += `
-                        <tr>
-                            <td><div class="food-name">${i}</div></td>
-                            <td><div class="quantity">Quantity: ${menuSelected[i].quantity}</div></td>  
-                            <td><strong><div class="food-price">₾${menuSelected[i].price.toFixed(2)}</div></strong></td>
-                        </tr>
-                        <br>
-            `;
+        if (Object.keys(menuSelected).length === 1) {
+            myOrderedMenu += `
+                <div class="my-order-item">
+                    <div class="food-name">No items in your order</div>
+                </div>
+            `
+        }
+        else {
+            for (var i in menuSelected) {
+                if (i != 'totalPrice') {
+                    console.log(i);
+                    myOrderedMenu += `
+                            <tr>
+                                <td><div class="food-name">${i}</div></td>
+                                <td><button class="minus-btn plus-minus-btn" id="minusBtn" onclick="plusMinusBtnInMyMenu('minus', this)"><i class="fa-solid fa-minus"></i></button><div class="quantity">Quantity: ${menuSelected[i].quantity}</div><button class="plus-btn plus-minus-btn" id="plusBtn" onclick="plusMinusBtnInMyMenu('plus', this)"><i class="fa-solid fa-plus"></i></button></td>                  
+                                <td><strong><div class="food-price">₾${menuSelected[i].price.toFixed(2)}</div></strong></td>
+                            </tr>
+                            <br>
+                `;
+                }
             }
         }
         myOrderedMenu += `
@@ -373,6 +404,53 @@ showHideMyOrder.forEach(btn => {
         }
     });
 });
+
+
+function plusMinusBtnInMyMenu(plusMinus, button) {
+    var item = button.closest('tr');
+    if (!item) {
+        console.error('No .my-order-item found for the button');
+        return;
+    }
+
+    var quantityElement = item.querySelector('.quantity');
+    var quantity = parseInt(quantityElement.textContent.split(': ')[1]);
+    var itemName = item.querySelector('.food-name').textContent.trim();
+    var itemPriceWithQuantity = parseFloat(item.querySelector('.food-price').textContent.trim().replace('₾', '').trim());
+    console.log(itemPriceWithQuantity);
+
+    var itemPrice = itemPriceWithQuantity / quantity;
+    var price = itemPrice * quantity;
+    
+    if (plusMinus === 'plus') {
+        quantity++;
+        quantities[itemName]++;
+    } else if (plusMinus === 'minus' && quantity > 1) {
+        quantity--;
+        quantities[itemName]--;
+    }
+
+    var itemInMenu = document.querySelector(`.${itemName.replace(/ /g, "-").toLowerCase()}`);
+    console.log(itemInMenu);
+    
+    if (itemInMenu) {
+        itemInMenu.querySelector('.quantity').textContent = `${quantity}`;
+    }
+
+    console.log(menuSelected);
+
+
+    quantityElement.textContent = `Quantity: ${quantity}`;
+
+    var price = itemPrice * quantity;
+    item.querySelector('.food-price').textContent = `₾${price.toFixed(2)}`;
+    menuSelected[itemName].price = price;
+    menuSelected[itemName].quantity = quantity;
+
+    totalPrice();
+    
+    document.querySelector('tbody .total-price').innerHTML = `Total Price: <strong>₾${menuSelected.totalPrice}</strong>`
+}
 
 
 window.addEventListener('click', (e) => {
