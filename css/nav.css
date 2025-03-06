@@ -35,6 +35,7 @@ nav {
 .navigation-bars {
     display: flex;
     align-items: center;
+    transition: opacity 0.2s ease, left 0.2s ease;
 }
 
 .navigation-bars li {
@@ -68,17 +69,42 @@ nav {
     }
 
     .navigation-bars {
-        display: none;
+        opacity: 0;
         position: absolute;
-        left: 0;
-    }
-    .navigation-bars.active {
+        left: -50%;
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: 50%;
-        align-items: flex-start;
         height: 80vh;
         background-color: #200000;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+    .navigation-bars li {
+        margin: 10px 0px;
+    }
+
+    .navigation-bars li a {
+        font-size: 20px;
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+
+    .navigation-bars li a.now-on {
+        background-color: #350101;
+    }
+
+    .navigation-bars.active {
+        opacity: 1;
+        left: 0%;
+    }
+}
+
+@media (min-width: 768px) {
+    .menu {
+        display: none;
     }
 }
 
