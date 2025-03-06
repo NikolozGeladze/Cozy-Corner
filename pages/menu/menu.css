@@ -1,0 +1,361 @@
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    row-gap: 30px;
+    column-gap: 30px;
+    grid-template-areas:
+        "navbar"
+        "menu"
+        "footer";
+    position: relative;
+}
+
+.food-menu {
+    grid-area: menu;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 50px;
+}
+
+.show-my-order {
+    z-index: 99999999999;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); 
+    background-color: #800000;
+    color: white;
+    padding: 5px 50px;
+    border-radius: 20px 20px 0px 0px; 
+    display: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.show-my-order:hover {
+    background-color: #990000;
+}
+
+.show-my-order.show {
+    display: block;
+}
+
+.menu-popup {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background-color: transparent;
+}
+
+.title-x {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-x .fa-solid {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.menu-popup.up {
+    top: 0 !important;
+}
+
+.menu-popup.focus {
+    z-index: 10000;
+    overflow-y: scroll;
+}
+
+.menu-container {
+    position: absolute;
+    width: 80%;
+    min-height: calc(100vh - 20px);
+    left: 50%;
+    z-index: 8000;
+    transform: translate(-50%);
+    box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px 50px;
+    display: none;
+    color: #800000;
+    overflow: visible;
+}
+
+.menu-container.focus {
+    display: block;
+}
+
+.my-order-item {
+    width: 100%;
+    padding: 10px;
+
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.my-order-item-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+.menu-container section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 10px 0px;
+    width: 100%;
+}
+
+body.no-scroll {
+    overflow-y: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.category {
+    border-bottom: 2.5px solid #004E49;
+    padding: 10px 0px;
+}
+
+.category-name {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.category-name h2 {
+    margin-left: 10px;
+}
+
+.category ul {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    transition: 1s;
+}
+
+.category.active ul {
+    max-height: 10000px;
+}
+.category .arrowhead-div svg {
+    transition: transform 0.3s;
+}
+
+.category.active .arrowhead-div svg {
+    transform: rotate(180deg);
+}
+
+.category ul li {
+    width: 20%;
+    margin: 20px 2.5%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.category ul li img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.add-to-card-div-main {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.add-to-card-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100px;
+}
+
+.add-to-card-div button {
+    padding: 5px;
+    background-color: #990000;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.add-to-card-div button.clicked {
+    display: block;
+    color: #800000;
+    background-color: transparent;
+}
+
+.add-to-card-div .minus-btn {
+    display: none;
+}
+
+.add-to-card-btn i {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+section table {
+    width: 100%;
+}
+
+section table tbody {
+    width: 100%;
+}
+
+section table tbody tr {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0,0.2);
+    width: 100%;
+    border-radius: 10px;
+}
+
+section table tbody tr td {
+    margin: 20px;
+    padding: 10px;
+}
+
+.total-price {
+    margin-top: 20px;
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.take-screenshot-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.take-screenshot-btn {
+    padding: 10px 20px;
+    background-color: #990000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.take-screenshot-btn:hover {
+    background-color: #800000;
+}
+
+.scroll-div {
+    position: absolute;
+    top: 50%;
+    width: 190%;
+    height: 50px;
+    justify-content: space-between;
+    display: none;
+}
+
+.scroll-div i {
+    font-size: 30px;
+    width: 50px;
+    transition: transform 0.3s;
+    color: #200000;
+}
+
+/* responsive */
+@media (max-width: 480px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .menu-container {
+        padding: 15px;
+    }
+
+    table tbody tr td {
+        text-align: center;
+    }
+
+    .category-name {
+        pointer-events: none;
+    }
+
+    .arrowhead-div svg {
+        transform: rotate(180deg);
+    }
+
+    .food-menu {
+        padding: 10px;
+    }
+
+    .food-menu {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .category ul {
+        flex-wrap: nowrap;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        max-height: 1000000px;
+    }   
+
+    .category ul li {
+        scroll-snap-align: start;
+        min-width: 47%;
+        margin: 0px;
+    }
+
+    .category {
+        position: relative;
+        overflow: visible;
+    }
+
+    .show-my-order {
+        min-width: 300px;
+    }
+    .menu-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .scroll-div {
+        display: flex;
+    }
+}
+
+@media (min-width: 481px) {
+    table tbody tr td {
+        min-width: 100px;
+    }
+
+    .menu-container {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1028px) {
+    .menu-container {
+        width: 80%;
+    }
+}

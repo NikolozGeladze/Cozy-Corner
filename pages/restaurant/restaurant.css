@@ -1,0 +1,64 @@
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr;
+    grid-template-rows: auto 1fr auto;
+    row-gap: 30px;
+    column-gap: 30px;
+    grid-template-areas:
+        "navbar navbar"
+        "image info"
+        "footer footer";
+}
+
+.restaurant-image {
+    grid-area: image;
+}
+
+.restaurant-image img {
+    width: 520px;
+    height: 520px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.restaurant-info {
+    grid-area: info;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.restaurant-info p {
+    letter-spacing: 2px;
+    margin-top: 20px;
+    font-weight: 450;
+}
+
+.view-menu-btn {
+    background-color: #990000;
+    box-shadow: 0px 0px 2px transparent;
+    border: 2px solid #800000 !important;
+    color: white;
+    padding: 20px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: 0.5s;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.view-menu-btn:hover {
+    background-color: transparent;
+    border: 2px solid #800000;
+    color: #800000;
+    box-shadow: 0px 0px 2px #800000;
+}
+
+.view-menu-btn i {
+    margin-right: 5px;
+}

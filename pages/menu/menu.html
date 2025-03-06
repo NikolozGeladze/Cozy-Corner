@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Corner</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="/index.html"><img src="/images/logo.png" class="logo" alt="Cozy Corner Logo"></a>
+        </div>
+        <ul class="navigation-bars">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/pages/restaurant/restaurant.html">Restaurant</a></li>
+            <li><a href="/pages/hotel/hotel.html">Hotel</a></li>
+            <li><a href="/pages/contact/contact.html">Contact</a></li>
+        </ul>
+        <button class="menu"><i class="fa-solid fa-bars"></i></button>
+    </nav>
+
+    <section class="food-menu">
+        <div class="show-my-order show-hide-my-order" id="showMyOrder showHideMyOrder">
+            <h1>Show My Order</h1>
+        </div>
+    </section>
+
+    <div class="menu-popup up">
+        <div class="menu-container" id="menuContainer">
+            <div class="my-menu">
+                <div class="title-x">
+                    <h1>MY MENU</h1>
+                    <i class="fa-solid fa-xmark faqs-btn close show-hide-my-order"></i>
+                </div>
+                <section>
+                    <table>
+                        <tbody></tbody>
+                    </table>
+                    <div id="takeScreenshotDiv" class="take-screenshot-div">
+                        <button class="take-screenshot-btn" onclick="takeScreenshot()">
+                            Take Screenshot
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="row">
+            <div class="footer-col">
+                <a href="/index.html"><img src="/images/logo.png" alt="Cozy Corner Logo"
+                        class="footer-logo"></a>
+                <ul>
+                    <li>
+                        <p>Lorem ipsum dolor.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col site-links">
+                <h3>SITE LINKS</h3>
+                <div class="line"></div>
+                <ul>
+                    <li><a href="/index.html">Home Page</a></li>
+                    <li><a href="/pages/restaurant/restaurant.html">Restaurant</a></li>
+                    <li><a href="/pages/hotel/hotel.html">Hotel</a></li>
+                    <li><a href="/pages/contact/contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact-info">
+                <h3>VISIT US/CONTACT US</h3>
+                <div class="line"></div>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot"></i>Mtskheta-Stepantsminda-Larsi 126 km, Kazbegi,
+                        Georgia.</li>
+                    <li><i class="fa-regular fa-envelope"></i>info@cozy.ge</li>
+                    <li><i class="fa-solid fa-phone"></i>+995 593 787 745</li>
+                </ul>
+            </div>
+            <div class="footer-col social-media">
+                <h3>FOLLOW US</h3>
+                <div class="line"></div>
+                <ul>
+                    <li><a href="https://www.facebook.com/restaurantcozycornerinkazbegi/" target="-blank"><i
+                                class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/cozycornerkazbegi/" target="-blank"><i
+                                class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/nav.js"></script>
+    <script src="menu.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+        integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>
