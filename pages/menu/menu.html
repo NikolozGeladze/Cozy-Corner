@@ -15,7 +15,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body class="no-scroll">
     <nav>
         <div class="logo">
             <a href="/index.html"><img src="/images/logo.png" class="logo" alt="Cozy Corner Logo"></a>
@@ -28,11 +28,8 @@
         </ul>
         <button class="menu"><i class="fa-solid fa-bars"></i></button>
     </nav>
-
     <section class="food-menu">
-        <div class="show-my-order show-hide-my-order" id="showMyOrder showHideMyOrder">
-            <h1>Show My Order</h1>
-        </div>
+
     </section>
 
     <div class="menu-popup up">
@@ -47,10 +44,14 @@
                     <table>
                         <tbody></tbody>
                     </table>
-                    <div id="takeScreenshotDiv" class="take-screenshot-div">
+                    <div id="takeScreenshotDivSplitOrder" class="take-screenshot-div-split-order">
                         <button class="take-screenshot-btn" onclick="takeScreenshot()">
                             Take Screenshot
                         </button>
+                        <button onclick="splitOrder(true)" class="split-order">Split Order</button>
+                        <div class="split-order-popup">
+
+                        </div>
                     </div>
                 </section>
             </div>
@@ -100,7 +101,17 @@
         </div>
     </footer>
 
-    <script src="/js/nav.js"></script>
+    <div class="choose-language-container">
+        <div class="choose-language-div">
+            <h1>Choose Language</h1>
+            <div class="choose-language-btns-div">
+                <button onclick="changeLanguage('ge')">Georgian</button>
+                <button onclick="changeLanguage('en')">English</button>
+                <button onclick="changeLanguage('ru')">Russian</button>
+            </div>
+        </div>
+    </div>
+
     <script src="menu.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
         integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="

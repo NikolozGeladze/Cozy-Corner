@@ -7,16 +7,15 @@
 
 footer {
     background-color: #200000;
-    padding: 25px 30px;
+    padding: 173px 30px;
     color: #ffffff;
-    bottom: 0;
     width: 100%;
     grid-area: footer;
 }
 
 .row {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
@@ -94,7 +93,24 @@ footer {
     font-size: 24px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
+    .row {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 970px) {
+    footer {
+        padding: 20px 15px;
+    }
+
+    .footer-col {
+        margin-top: 20px;
+        min-width: 20%;
+    }
+}
+
+@media (max-width: 880px) {
     .row {
         flex-direction: column;
     }
@@ -103,9 +119,4 @@ footer {
         margin-top: 40px;
         max-width: 100%;
     }
-
-    .footer-logo {
-        width: 30%;
-    }
-    
 }

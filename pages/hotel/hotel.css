@@ -1,0 +1,189 @@
+main {
+    width: 100%;
+    min-height: 100vh;
+}
+
+main .img-container {
+    width: 100%;
+    height: 27vh;
+}
+
+main .img-container img {
+    width: 100%;
+    height: 206.5%;
+    object-position: bottom;
+    object-fit: cover;
+}
+
+main .hotel-rooms {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+main .hotel-rooms .room {
+    width: 300px;
+    height: 350px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+main .hotel-rooms .room img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+main .hotel-rooms .room h2 {
+    color: #800000;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+main .hotel-rooms .room h2,
+main .hotel-rooms .room h4 {
+    width: 100%;
+    text-align: center;
+}
+
+main .hotel-rooms .room p {
+    color: #959595;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.about {
+    width: 100%;
+    padding: 50px;
+    background-color: #F8F8F8;
+    margin-top: 20px;
+    color: #800000;
+    display: flex;
+    flex-direction: column;
+}
+
+.about h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.about h4 {
+    font-size: 20px;
+}
+
+.about p {
+    font-size: 18px;
+    text-align: justify;
+    line-height: 25px;
+    margin-bottom: 30px;
+    text-indent: 20px;
+    letter-spacing: 0.5px;
+    word-spacing: 1px;
+    color: #959595;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 37px 0px;
+}
+
+.wrapper i {
+    position: absolute;
+    background-color: #800000;
+    color: white;
+    border-radius: 50%;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.wrapper i.fa-angle-right {
+    right: -10px;
+}
+
+.wrapper i.fa-angle-left {
+    left: -10px;
+}
+
+.carousel {
+    width: 1200px;
+    list-style: none;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 12px);
+    gap: 16px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: 0;
+    padding: 20px 0px;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel.is-dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.carousel.no-transition {
+    scroll-behavior: auto;
+}
+
+.carousel.is-dragging .card {
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel .card {
+    scroll-snap-align: start;
+    min-width: 300px;
+    background-color: white;
+    box-shadow: 0px 0px 10px 1px grey;
+    border-radius: 20px;
+    overflow: hidden;
+    display: inline-block;
+    height: 300px;
+}
+
+
+.carousel .card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+@media (max-width: 1020px) {
+    .carousel {
+        grid-auto-columns: calc((100%/2) - 9px);
+    }
+}
+
+@media (max-width: 750px) {
+    .carousel {
+        grid-auto-columns: 100%;
+    }
+}

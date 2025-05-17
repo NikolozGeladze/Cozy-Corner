@@ -3,13 +3,94 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
-    row-gap: 30px;
+    row-gap: 10px;
     column-gap: 30px;
     grid-template-areas:
         "navbar"
         "menu"
         "footer";
     position: relative;
+    overflow: auto;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.show-change-language-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.change-language-btn {
+    background-color: #800000;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+
+.choose-language-container {
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99999999999999999999999999999;
+    opacity: 1;
+    transition: 0.5s ease-in-out;
+}
+
+.choose-language-container.hide {
+    opacity: 0;
+    z-index: -100;
+    height: 0px;
+}
+
+.choose-language-div {
+    background-color: white;
+    width: 400px;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    color: #800000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.choose-language-container.hide .choose-language-div {
+    top: 100%;    
+    opacity: 0;
+}
+
+.choose-language-btns-div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.choose-language-btns-div button {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #800000;
+    background-color: #990000;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    font-weight: 700;
+}
+
+.choose-language-btns-div button:hover {
+    background-color: white;
+    color: #800000;
 }
 
 .food-menu {
@@ -17,12 +98,14 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px 50px;
+    position: relative;
 }
 
 .food-name {
     min-height: 50px;
+    padding: 5px 0px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
 }
 
 .food-price {
@@ -78,7 +161,7 @@ body {
 
 .menu-popup.focus {
     z-index: 10000;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .menu-container {
@@ -92,13 +175,18 @@ body {
     background-color: white;
     border-radius: 20px;
     padding: 30px 50px;
-    display: none;
     color: #800000;
     overflow: visible;
+    visibility: hidden;
+    opacity: 0;
+    bottom: -50%;
+    transition: all 0.3s ease-in-out;
 }
 
 .menu-container.focus {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    bottom: 0;
 }
 
 td button {
@@ -231,9 +319,15 @@ section table tbody {
 }
 
 section table tbody tr {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0,0.2);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2) !important;
+    background-color: transparent !important;
     width: 100%;
     border-radius: 10px;
+    position: relative;
+}
+
+.food-name-my-menu {
+    align-items: center;
 }
 
 section table tbody tr td {
@@ -241,31 +335,53 @@ section table tbody tr td {
     padding: 10px;
 }
 
+td .fa-xmark {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
 .total-price {
     margin-top: 20px;
     position: absolute;
     right: 50%;
     transform: translateX(50%);
+    text-align: center;
 }
 
-.take-screenshot-div {
+.take-screenshot-div-split-order {
     width: 100%;
     display: flex;
-    justify-content: center;
-    margin-top: 60px;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 80px;
+    position: relative;
+}
+
+.take-screenshot-div-split-order button {
+    cursor: pointer;
+    border-radius: 5px;
+    width: 10%;
+    padding: 10px 20px;
+    border: 2px solid #990000;
+    background-color: transparent;
+    color: #800000;
+    transition: 0.3s ease-in-out;
 }
 
 .take-screenshot-btn {
-    padding: 10px 20px;
-    background-color: #990000;
-    color: white;
+    background-color: #990000 !important;
+    color: white !important;
     border: none;
-    cursor: pointer;
-    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    width: 20% !important;
 }
 
 .take-screenshot-btn:hover {
-    background-color: #800000;
+    background-color: #800000 !important;
 }
 
 .scroll-div {
@@ -277,14 +393,51 @@ section table tbody tr td {
     display: none;
 }
 
+.category.active .scroll-div i {
+    opacity: 1;
+    visibility: visible;
+}
+
 .scroll-div i {
     font-size: 30px;
     width: 50px;
-    transition: transform 0.3s;
+    transition: transform 0.3s, opacity 1s, visibility 1s;
     color: #200000;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
 }
 
-/* responsive */
+.split-order-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.split-order-popup.active {
+    visibility: visible;
+    opacity: 1;
+    bottom: -30px;
+}
+
+
+.plus-minus-man-quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.plus-minus-man-quantity i {
+    cursor: pointer;
+}
+
+
 @media (max-width: 480px) {
     body {
         overflow-x: hidden;
@@ -298,36 +451,6 @@ section table tbody tr td {
         text-align: center;
     }
 
-    .arrowhead-div svg {
-        transform: rotate(180deg);
-    }
-
-    .food-menu {
-        padding: 10px;
-    }
-
-    .food-menu {
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-    .category ul {
-        flex-wrap: nowrap;
-        gap: 20px;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        max-height: 1000000px;
-    }   
-
-    .category ul li {
-        scroll-snap-align: start;
-        min-width: 47%;
-        margin: 0px;
-    }
-
     .category {
         position: relative;
         overflow: visible;
@@ -336,13 +459,10 @@ section table tbody tr td {
     .show-my-order {
         min-width: 300px;
     }
+
     .menu-container {
         width: 100%;
         max-width: 100%;
-    }
-
-    .scroll-div {
-        display: flex;
     }
 }
 
@@ -360,5 +480,33 @@ section table tbody tr td {
 @media (min-width: 1028px) {
     .menu-container {
         width: 80%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .category ul {
+        flex-wrap: nowrap;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }   
+
+    .category ul li {
+        scroll-snap-align: start;
+        min-width: 47%;
+        margin: 0px;
+    }
+
+    .scroll-div {
+        display: flex;
+    }
+
+    .food-menu {
+        padding: 10px;
+        width: 100%;
+        overflow: hidden;
     }
 }

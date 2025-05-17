@@ -1,0 +1,82 @@
+main {
+    background-image: url('/images/stacked-steps-haikei.png');
+    height: 78.7vh;
+    background-position: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-size: 100%;
+}
+
+.left-side {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    width: 70%;
+}
+
+.left-side .text h1 {
+    font-size: 45px;
+    color: white;
+    text-align: center;
+}
+
+.left-side .text h1+p {
+    color: white;
+    text-align: justify;
+    text-indent: 40px;
+    margin-top: 20px;
+}
+
+.right-side a {
+    text-decoration: none;
+}
+
+.right-side .restaurant-and-hotel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+}
+
+.restaurant-hotel {
+    width: 300px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: #800000;
+    box-shadow: 0px 0px 20px 20px rgb(0, 0, 0, 0.5);
+    padding: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.restaurant-hotel:hover {
+    transform: scale(1.1);
+}
+
+.restaurant-hotel h2 {
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 20px rgb(0, 0, 0, 0.5);
+}
+
+.restaurant-hotel.restaurant {
+    background-image: url('/images/cozy-place.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 70%;
+}
+
+.restaurant-hotel.hotel {
+    background-image: url('/images/cozyHotel.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 25%;
+}
