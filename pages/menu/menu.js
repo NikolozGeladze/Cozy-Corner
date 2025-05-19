@@ -686,10 +686,14 @@ function changeLanguage(language) {
 var categoriesName = document.querySelectorAll('.category-name')
 
 categoriesName.forEach(categoryName => {
+    console.log("AAAAA");
+    
     categoryName.addEventListener('click', () => {
         if (!categoryName.parentNode.classList.contains('active')) {
             categoriesName.forEach(item => item.parentNode.classList.remove('active'));
         }
+        console.log("BBBBBB");
+        
         categoryName.parentNode.classList.toggle('active');
     });
 });
