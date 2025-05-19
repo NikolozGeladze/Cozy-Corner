@@ -7,7 +7,7 @@
 
 nav {
     width: 100%;
-    padding: 25px 30px;
+    padding: 10px 30px;
     background-color: #200000;
     position: sticky;
     top: 0;
@@ -28,7 +28,7 @@ nav {
 
 .logo {
     font-size: 18px;
-    width: 100px;
+    width: 70px;
     color: white;
 }
 
@@ -36,6 +36,7 @@ nav {
     display: flex;
     align-items: center;
     transition: opacity 0.2s ease, left 0.2s ease;
+    z-index: -1111111111111;
 }
 
 .navigation-bars li {

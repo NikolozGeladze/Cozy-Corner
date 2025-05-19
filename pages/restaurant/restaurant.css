@@ -13,7 +13,7 @@ body {
 main {
     grid-area: main;
     display: flex;
-    min-height: calc(100vh - 150px);
+    min-height: 88vh;
     width: 100%;
     background-image: url('/images/cozy-corner-in-kazbegi.jpeg');
     background-size: cover;

@@ -106,10 +106,17 @@ body.no-scroll {
     padding: 5px 0px;
     display: flex;
     flex-direction: column;
+    text-align: center;
+    width: 100%;
+}
+
+li strong {
+    text-align: center;
+    width: 100%;
 }
 
 .food-price {
-    margin-top: 10px
+    margin-top: 10px;
 }
 
 .show-my-order {
@@ -259,6 +266,15 @@ body.no-scroll {
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 1px black;
+    transition: 0.3s ease-in-out;
+    padding: 10px;
+}
+
+.category ul li:hover {
+    transform: scale(1.025);
 }
 
 .category ul li img {
@@ -277,33 +293,48 @@ body.no-scroll {
 
 .add-to-card-div {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-direction: row;
+    position: relative;
     width: 100px;
+    transform: ta;
 }
 
 .add-to-card-div button {
     padding: 5px;
     background-color: #990000;
+    color: white;
     width: 30px;
     height: 30px;
     border: none;
     border-radius: 50%;
-    color: white;
     cursor: pointer;
     margin-top: 10px;
     margin-left: 5px;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, transform 0.5s ease-in-out, background-color 1s ease-in-out, color 1s ease-in-out;;
+    transform: translateX(0px);
 }
 
 .add-to-card-div button.clicked {
-    display: block;
     color: #800000;
     background-color: transparent;
+    position: relative;
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(20px);
+}
+
+.add-to-card-div .minus-btn.clicked {
+    transform: translateX(-20px);
 }
 
 .add-to-card-div .minus-btn {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    color: #800000;
+    background-color: transparent;
 }
 
 .add-to-card-btn i {
@@ -366,7 +397,6 @@ td .fa-xmark {
 .take-screenshot-div-split-order button {
     cursor: pointer;
     border-radius: 5px;
-    width: 10%;
     padding: 10px 20px;
     border: 2px solid #990000;
     background-color: transparent;
@@ -379,7 +409,6 @@ td .fa-xmark {
     color: white !important;
     border: none;
     transition: background-color 0.3s ease-in-out;
-    width: 20% !important;
 }
 
 .take-screenshot-btn:hover {
@@ -398,6 +427,8 @@ td .fa-xmark {
 .category.active .scroll-div i {
     opacity: 1;
     visibility: visible;
+    display: flex;
+    align-items: center;
 }
 
 .scroll-div i {
@@ -408,6 +439,10 @@ td .fa-xmark {
     opacity: 0;
     visibility: hidden;
     cursor: pointer;
+}
+
+.category.active .scroll-div i.fa-chevron-right {
+    justify-content: flex-end;
 }
 
 .split-order-popup {
@@ -504,6 +539,7 @@ td .fa-xmark {
 
     .scroll-div {
         display: flex;
+        z-index: -1;
     }
 
     .food-menu {

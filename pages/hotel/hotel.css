@@ -187,3 +187,9 @@ main .hotel-rooms .room p {
         grid-auto-columns: 100%;
     }
 }
+
+@media (max-width: 450px) {
+    .about {
+        padding: 10px;
+    }
+}

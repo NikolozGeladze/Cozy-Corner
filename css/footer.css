@@ -11,6 +11,7 @@ footer {
     color: #ffffff;
     width: 100%;
     grid-area: footer;
+    height: calc(100vh - 94px);
 }
 
 .row {
@@ -110,11 +111,11 @@ footer {
     }
 }
 
-@media (max-width: 880px) {
-    .row {
-        flex-direction: column;
+@media (max-width: 900px) {
+    .footer-col:has(.footer-logo) {
+        display: none !important;
     }
-    
+
     .footer-col {
         margin-top: 40px;
         max-width: 100%;
