@@ -24,19 +24,6 @@ main {
     gap: 30px;
 }
 
-.restaurant-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.restaurant-image img {
-    width: 520px;
-    height: 520px;
-    object-fit: cover;
-    border-radius: 100%;
-}
-
 .restaurant-info {
     justify-content: center;
     align-items: center;
@@ -55,6 +42,8 @@ main {
     font-weight: 450;
     text-align: justify;
     padding: 10px;
+    width: 60%;
+    text-indent: 40px;
 }
 
 .view-menu-btn {
@@ -93,6 +82,8 @@ main {
         width: 250px;
         height: 250px;
     }
-}
 
-@media (max-width: 768px) {}
+    .restaurant-info p {
+        width: 95%;
+    }
+}

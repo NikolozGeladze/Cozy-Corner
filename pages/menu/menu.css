@@ -232,6 +232,9 @@ body.no-scroll {
     align-items: center;
     cursor: pointer;
     pointer-events: all;
+    background-color: #eadfdd;
+    border-radius: 2px;
+    padding: 3px;
 }
 
 .category-name h2 {
@@ -244,7 +247,7 @@ body.no-scroll {
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
-    transition: 1s;
+    transition: 0.3s ease-in-out;
 }
 
 .category.active ul {
@@ -267,14 +270,24 @@ body.no-scroll {
     align-items: flex-start;
     flex-direction: column;
     background-color: white;
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px 1px black;
+    border-radius: 2px;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
     transition: 0.3s ease-in-out;
     padding: 10px;
+    position: relative;
 }
 
 .category ul li:hover {
     transform: scale(1.025);
+}
+
+.allergens img {
+    width: 25px !important;
+    height: 25px !important;
+    object-fit: cover;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .category ul li img {
@@ -501,6 +514,10 @@ td .fa-xmark {
         width: 100%;
         max-width: 100%;
     }
+
+    .category-name {
+        font-size: 12px;
+    }
 }
 
 @media (min-width: 481px) {
@@ -523,18 +540,16 @@ td .fa-xmark {
 @media (max-width: 1000px) {
     .category ul {
         flex-wrap: nowrap;
-        gap: 20px;
+        gap: 0px;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
-        padding: 0;
-        margin: 0;
         width: 100%;
     }
 
     .category ul li {
         scroll-snap-align: start;
-        min-width: 47%;
-        margin: 0px;
+        min-width: 50%;
+        margin: 3px;
     }
 
     .scroll-div {

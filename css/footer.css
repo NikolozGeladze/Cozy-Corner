@@ -119,5 +119,17 @@ footer {
     .footer-col {
         margin-top: 40px;
         max-width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    footer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .row {
+        justify-content: center;
+        width: 70%;
     }
 }

@@ -634,6 +634,9 @@ function renderMenu(menu) {
                 <ul>
                     ${category.food.map(item => `
                         <li class="item ${item.name.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()}">
+                            <div class="allergens">
+                                <img src="https://img.freepik.com/premium_photo/isolated_plate_georgian_khinkali_dumplings_219193-6644.jpg">
+                            </div>
                             <img src="https://img.freepik.com/premium_photo/isolated_plate_georgian_khinkali_dumplings_219193-6644.jpg" alt="${item.name}">
                             <div class="food-name"></div>
                             <strong>
@@ -851,7 +854,7 @@ function renderMyOrder() {
                 myOrderedMenu += `
                             <tr>
                                 <td><i onclick="deleteFood('${i}', event)" class="fa-solid fa-xmark"></i> <div class="food-name food-name-my-menu">${i}</div></td>
-                                <td><button class="minus-btn plus-minus-btn" id="minusBtn" onclick="plusMinusBtnInMyMenu('minus', this)"><i class="fa-solid fa-minus"></i></button><div class="quantity">Quantity: ${menuSelected[i].quantity}</div><button class="plus-btn plus-minus-btn" id="plusBtn" onclick="plusMinusBtnInMyMenu('plus', this)"><i class="fa-solid fa-plus"></i></button></td>                  
+                                <td><button class="minus-btn plus-minus-btn" id="minusBtn" onclick="plusMinusBtnInMyMenu('minus', this)"><i class="fa-solid fa-minus"></i></button><div class="quantity">${menuSelected[i].quantity}</div><button class="plus-btn plus-minus-btn" id="plusBtn" onclick="plusMinusBtnInMyMenu('plus', this)"><i class="fa-solid fa-plus"></i></button></td>                  
                                 <td><strong><div class="food-price">₾${menuSelected[i].price.toFixed(2)}</div></strong></td>
                             </tr>
                             <br>
@@ -860,7 +863,7 @@ function renderMyOrder() {
         }
     }
     myOrderedMenu += `
-            <div class="total-price">Total Price: <strong>₾${menuSelected.totalPrice}</strong><br>Included VAT18% & Service Fee 0%</div>
+            <div class="total-price">Total Price: <strong>₾${menuSelected.totalPrice}</strong><br>Included Service Fee 0%</div>
         `
     showMenuSection.innerHTML = myOrderedMenu;
 }
