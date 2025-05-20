@@ -542,6 +542,11 @@ td .fa-xmark {
         z-index: -1;
     }
 
+    .category.active .scroll-div {
+        display: flex;
+        z-index: 99;
+    }
+
     .food-menu {
         padding: 10px;
         width: 100%;
